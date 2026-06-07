@@ -66,7 +66,7 @@ public/data/bear_sightings.csv
 | event_type | 目撃、痕跡、人身被害、捕獲済み |
 | description | 内容 |
 | source_name | 情報源名 |
-| source_url | 公式ページURL |
+| source_url | 公式情報ページURL |
 | latitude | 緯度 |
 | longitude | 経度 |
 | accuracy_m | 位置精度。例: 500 |
@@ -85,7 +85,7 @@ public/data/bear_sightings.csv
 
 緊急時は110番、人身被害時は119番へ連絡してください。このサイトの情報だけで安全判断を行わず、必ず自治体・警察・消防など公的機関の情報を確認してください。
 
-公式リンクはMVP用の仮URLです。公開前に各県の公式URLへ差し替えてください。
+公式情報へのリンクは本番用URLを設定しています。リンク先の掲載元と更新状況を確認してください。
 
 ## 今後の拡張案
 

@@ -280,17 +280,18 @@ function SightingList({ sightings }: { sightings: BearSighting[] }) {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-extrabold">公式リンク</dt>
+                  <dt className="font-extrabold">公式情報へのリンク</dt>
                   <dd className="mt-1">
                     <a
                       href={sighting.source_url}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="inline-flex min-h-10 items-center gap-2 rounded border border-civic-600 px-3 py-2 text-sm font-extrabold text-civic-800 transition hover:bg-civic-50 focus:outline-none focus:ring-2 focus:ring-civic-600"
                     >
-                      公式ページへ
+                      公式情報ページへ
                       <ExternalLink aria-hidden="true" className="h-4 w-4" />
                     </a>
+                    <p className="mt-1 text-xs font-bold text-slate-500">外部サイトへ移動します</p>
                   </dd>
                 </div>
               </dl>

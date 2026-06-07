@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, MapPinned, ShieldAlert, Siren } from "lucide-react";
 import { PrefectureCard } from "@/components/PrefectureCard";
 import { RiskGuide } from "@/components/RiskGuide";
-import { officialLinks } from "@/lib/officialLinks";
+import { environmentOfficialLink, prefectureOfficialLinks } from "@/lib/officialLinks";
 
 export default function HomePage() {
   return (
@@ -70,7 +70,7 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {officialLinks.map((link) => (
+          {prefectureOfficialLinks.map((link) => (
             <PrefectureCard key={link.prefecture} link={link} />
           ))}
         </div>
@@ -81,8 +81,18 @@ export default function HomePage() {
       <section className="rounded border border-slate-200 bg-white p-5 shadow-soft">
         <h2 className="text-xl font-extrabold text-slate-900">公式情報へのリンク案内</h2>
         <p className="mt-2 text-sm leading-7 text-slate-600">
-          MVPでは公式URLを仮URLで実装しています。公開時は各県の公式ページ、公式マップ、アプリ案内、Excel情報のURLへ差し替えてください。
+          東北6県の公式情報ページと、都道府県の情報入口をまとめた環境省ページを確認できます。
         </p>
+        <p className="mt-4 text-xs font-bold text-slate-500">外部サイトへ移動します</p>
+        <a
+          href={environmentOfficialLink.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex min-h-11 items-center gap-2 rounded border border-civic-600 px-4 py-2 text-sm font-extrabold text-civic-800 transition hover:bg-civic-50 focus:outline-none focus:ring-2 focus:ring-civic-600"
+        >
+          環境省の公式情報ページを開く
+          <ExternalLink aria-hidden="true" className="h-4 w-4" />
+        </a>
       </section>
     </div>
   );

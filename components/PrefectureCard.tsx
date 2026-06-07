@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import type { OfficialLink } from "@/lib/types";
 
@@ -14,13 +13,16 @@ export function PrefectureCard({ link }: { link: OfficialLink }) {
       </div>
       <p className="text-sm font-medium text-slate-700">{link.description}</p>
       <p className="mt-3 text-sm leading-6 text-slate-600">{link.note}</p>
-      <Link
-        href="/official-links"
+      <p className="mt-4 text-xs font-bold text-slate-500">外部サイトへ移動します</p>
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-4 inline-flex min-h-11 items-center gap-2 rounded bg-forest-700 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-forest-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:ring-offset-2"
       >
-        公式情報を見る
+        公式情報ページを開く
         <ArrowRight aria-hidden="true" className="h-4 w-4" />
-      </Link>
+      </a>
     </article>
   );
 }

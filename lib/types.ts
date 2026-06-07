@@ -29,7 +29,7 @@ export type BearSighting = {
 };
 
 export type OfficialLink = {
-  prefecture: Prefecture;
+  prefecture: string;
   name: string;
   description: string;
   url: string;

@@ -18,12 +18,13 @@ export function OfficialLinkCard({ link }: { link: OfficialLink }) {
       <a
         href={link.url}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="mt-5 inline-flex min-h-11 items-center gap-2 rounded bg-forest-700 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-forest-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:ring-offset-2"
       >
-        公式リンクを開く
+        公式情報ページを開く
         <ExternalLink aria-hidden="true" className="h-4 w-4" />
       </a>
+      <p className="mt-2 text-xs font-bold text-slate-500">外部サイトへ移動します</p>
     </article>
   );
 }
