@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+a {
+  color: inherit;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+}
+
+.bear-marker {
+  align-items: center;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.25);
+  display: flex;
+  font-size: 13px;
+  font-weight: 800;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  width: 34px;
+}
+
+.bear-marker-sighting {
+  background: #facc15;
+  color: #422006;
+}
+
+.bear-marker-trace {
+  background: #38bdf8;
+  color: #082f49;
+}
+
+.bear-marker-injury {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.bear-marker-captured {
+  background: #9ca3af;
+  color: #111827;
+}
+
+.sighting-popup {
+  color: #1f2937;
+  min-width: 230px;
+}
+
+.sighting-popup__title {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+
+.sighting-popup__row {
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.sighting-popup__link {
+  color: #205e80;
+  font-weight: 700;
+  text-decoration: underline;
+}
