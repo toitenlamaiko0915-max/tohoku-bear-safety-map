@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink, MapPinned, ShieldAlert, Siren } from "lucide-react";
+import { ArrowRight, CalendarDays, ExternalLink, MapPinned, ShieldAlert, Siren } from "lucide-react";
 import { PrefectureCard } from "@/components/PrefectureCard";
 import { RiskGuide } from "@/components/RiskGuide";
 import { environmentOfficialLink, prefectureOfficialLinks } from "@/lib/officialLinks";
@@ -16,6 +16,10 @@ export default function HomePage() {
           <p className="mt-4 max-w-3xl text-base leading-8 text-slate-700">
             東北6県の公式クマ出没情報をまとめて確認できます。このサイトは速報・参考情報です。
             緊急時は110番、人身被害時は119番へ連絡してください。
+          </p>
+          <p className="mt-4 inline-flex items-center gap-2 rounded border border-civic-100 bg-civic-50 px-3 py-2 text-sm font-extrabold text-civic-800">
+            <CalendarDays aria-hidden="true" className="h-4 w-4 flex-none" />
+            最終更新日：2026年6月7日
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <Link
