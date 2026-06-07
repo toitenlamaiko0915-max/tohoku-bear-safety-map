@@ -1,5 +1,5 @@
 import type { BearSighting } from "@/lib/types";
-import { eventTypeStyles } from "@/lib/sightings";
+import { eventTypeStyles, getDisplayDescription, sourceNotice } from "@/lib/sightings";
 
 export function SightingPopup({ sighting }: { sighting: BearSighting }) {
   return (
@@ -7,7 +7,7 @@ export function SightingPopup({ sighting }: { sighting: BearSighting }) {
       <h3>{`${sighting.prefecture}${sighting.municipality}${sighting.area}`}</h3>
       <p>発生日：{sighting.occurred_at}</p>
       <p>種別：{sighting.event_type}</p>
-      <p>内容：{sighting.description}</p>
+      <p>内容：{getDisplayDescription(sighting.description)}</p>
       <p>情報源：{sighting.source_name}</p>
     </div>
   );
@@ -15,13 +15,15 @@ export function SightingPopup({ sighting }: { sighting: BearSighting }) {
 
 export function renderSightingPopupHtml(sighting: BearSighting): string {
   const accuracy = Number.isFinite(sighting.accuracy_m) && sighting.accuracy_m > 0 ? `${sighting.accuracy_m}m程度の範囲の情報` : "位置精度の指定なし";
+  const description = getDisplayDescription(sighting.description);
 
   return `
     <div class="sighting-popup">
       <h3 class="sighting-popup__title">${escapeHtml(sighting.prefecture)}${escapeHtml(sighting.municipality)}${escapeHtml(sighting.area)}</h3>
       <p class="sighting-popup__row"><strong>発生日：</strong>${escapeHtml(sighting.occurred_at)}</p>
       <p class="sighting-popup__row"><strong>種別：</strong>${escapeHtml(eventTypeStyles[sighting.event_type].label)}</p>
-      <p class="sighting-popup__row"><strong>内容：</strong>${escapeHtml(sighting.description)}</p>
+      <p class="sighting-popup__row"><strong>内容：</strong>${escapeHtml(description)}</p>
+      <p class="sighting-popup__row">${escapeHtml(sourceNotice)}</p>
       <p class="sighting-popup__row"><strong>範囲：</strong>${escapeHtml(accuracy)}</p>
       <p class="sighting-popup__row">地図上の位置は概略表示です。</p>
       <p class="sighting-popup__row"><strong>状態：</strong>${escapeHtml(sighting.status)}</p>

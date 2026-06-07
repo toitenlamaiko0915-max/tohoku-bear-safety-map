@@ -65,6 +65,12 @@ export const freshnessStyles: Record<
   }
 };
 
+export const fallbackDescription =
+  "公式情報ページに個別詳細の記載がない、または確認できないため、内容は概略表示です。詳細は公式情報ページをご確認ください。";
+
+export const sourceNotice =
+  "この情報は公式情報を確認しやすくするための参考表示です。最新・詳細情報は必ず公式情報ページをご確認ください。";
+
 export function parseBearSightingsCsv(csv: string): BearSighting[] {
   const rows = parseCsv(csv.trim());
   if (rows.length < 2) {
@@ -86,7 +92,7 @@ export function parseBearSightingsCsv(csv: string): BearSighting[] {
         area: row.area,
         occurred_at: row.occurred_at,
         event_type: eventType,
-        description: row.description,
+        description: row.description.trim(),
         source_name: row.source_name,
         source_url: row.source_url,
         latitude: Number(row.latitude),
@@ -96,6 +102,11 @@ export function parseBearSightingsCsv(csv: string): BearSighting[] {
       };
     })
     .filter((sighting) => Number.isFinite(sighting.latitude) && Number.isFinite(sighting.longitude));
+}
+
+export function getDisplayDescription(description: string): string {
+  const normalizedDescription = description.trim();
+  return normalizedDescription.length > 0 ? normalizedDescription : fallbackDescription;
 }
 
 export function getFreshness(occurredAt: string, now = new Date()): FreshnessType {

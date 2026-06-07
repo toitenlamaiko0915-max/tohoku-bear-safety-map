@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ExternalLink, Loader2, MapPinned, ShieldAlert } from "lucide-react";
 import { MapFilters } from "@/components/MapFilters";
 import { renderSightingPopupHtml } from "@/components/SightingPopup";
-import { eventTypeStyles, freshnessStyles, getFreshness, parseBearSightingsCsv, sortSightingsByDate } from "@/lib/sightings";
+import { eventTypeStyles, freshnessStyles, getDisplayDescription, getFreshness, parseBearSightingsCsv, sortSightingsByDate, sourceNotice } from "@/lib/sightings";
 import { eventTypes, freshnessTypes, prefectures, type BearEventType, type BearSighting, type FreshnessType, type Prefecture } from "@/lib/types";
 
 type LeafletModule = typeof import("leaflet");
@@ -248,6 +248,7 @@ function SightingList({ sightings }: { sightings: BearSighting[] }) {
       <div className="grid gap-3">
         {sightings.map((sighting) => {
           const freshness = getFreshness(sighting.occurred_at);
+          const description = getDisplayDescription(sighting.description);
           return (
             <article key={sighting.id} className={`rounded border border-l-4 border-slate-200 p-4 ${freshnessStyles[freshness].itemClass}`}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -269,7 +270,10 @@ function SightingList({ sightings }: { sightings: BearSighting[] }) {
               <dl className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
                 <div>
                   <dt className="font-extrabold">内容</dt>
-                  <dd className="mt-1 leading-6">{sighting.description}</dd>
+                  <dd className="mt-1 leading-6">{description}</dd>
+                  <dd className="mt-2 rounded border border-slate-200 bg-slate-50 p-2 text-xs font-medium leading-5 text-slate-600">
+                    {sourceNotice}
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-extrabold">情報源</dt>
