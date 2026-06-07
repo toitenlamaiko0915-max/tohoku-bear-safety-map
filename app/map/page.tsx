@@ -12,7 +12,10 @@ export default function MapPage() {
         </p>
         <div className="mt-4 flex items-start gap-2 rounded border border-amber-300 bg-amber-50 p-3 text-sm leading-6 text-amber-950">
           <AlertTriangle aria-hidden="true" className="mt-1 h-5 w-5 flex-none" />
-          <p>この地図は安全を保証するものではありません。緊急時は行政・警察・消防へ連絡してください。</p>
+          <p>
+            地図上の位置は概略表示です。実際の詳細情報は各県の公式情報をご確認ください。
+            この地図は安全を保証するものではありません。緊急時は行政・警察・消防へ連絡してください。
+          </p>
         </div>
       </section>
       <BearMap />

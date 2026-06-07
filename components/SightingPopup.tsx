@@ -4,7 +4,7 @@ import { eventTypeStyles } from "@/lib/sightings";
 export function SightingPopup({ sighting }: { sighting: BearSighting }) {
   return (
     <div>
-      <h3>{`${sighting.prefecture}${sighting.municipality}${sighting.area}周辺`}</h3>
+      <h3>{`${sighting.prefecture}${sighting.municipality}${sighting.area}`}</h3>
       <p>発生日：{sighting.occurred_at}</p>
       <p>種別：{sighting.event_type}</p>
       <p>内容：{sighting.description}</p>
@@ -18,11 +18,12 @@ export function renderSightingPopupHtml(sighting: BearSighting): string {
 
   return `
     <div class="sighting-popup">
-      <h3 class="sighting-popup__title">${escapeHtml(sighting.prefecture)}${escapeHtml(sighting.municipality)}${escapeHtml(sighting.area)}周辺</h3>
+      <h3 class="sighting-popup__title">${escapeHtml(sighting.prefecture)}${escapeHtml(sighting.municipality)}${escapeHtml(sighting.area)}</h3>
       <p class="sighting-popup__row"><strong>発生日：</strong>${escapeHtml(sighting.occurred_at)}</p>
       <p class="sighting-popup__row"><strong>種別：</strong>${escapeHtml(eventTypeStyles[sighting.event_type].label)}</p>
       <p class="sighting-popup__row"><strong>内容：</strong>${escapeHtml(sighting.description)}</p>
       <p class="sighting-popup__row"><strong>範囲：</strong>${escapeHtml(accuracy)}</p>
+      <p class="sighting-popup__row">地図上の位置は概略表示です。</p>
       <p class="sighting-popup__row"><strong>状態：</strong>${escapeHtml(sighting.status)}</p>
       <p class="sighting-popup__row"><strong>情報源：</strong>${escapeHtml(sighting.source_name)}</p>
       <p class="sighting-popup__row"><a class="sighting-popup__link" href="${escapeAttribute(sighting.source_url)}" target="_blank" rel="noopener noreferrer">詳細：公式情報ページへ</a></p>

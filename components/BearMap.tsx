@@ -196,7 +196,9 @@ export default function BearMap() {
                 <MapPinned aria-hidden="true" className="h-5 w-5 text-forest-700" />
                 東北6県の出没情報
               </h2>
-              <p className="mt-1 text-sm text-slate-600">ピンの位置はCSVの緯度経度を使い、画面上には詳細住所を表示しません。</p>
+              <p className="mt-1 text-sm text-slate-600">
+                地図上の位置は概略表示です。実際の詳細情報は各県の公式情報をご確認ください。
+              </p>
             </div>
             <div className="rounded border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-bold text-amber-950">
               安全判断は必ず公式情報で確認
@@ -253,7 +255,7 @@ function SightingList({ sightings }: { sightings: BearSighting[] }) {
                   <h3 className="text-base font-extrabold text-slate-900">
                     {sighting.prefecture}
                     {sighting.municipality}
-                    {sighting.area}周辺
+                    {sighting.area}
                   </h3>
                   <p className="mt-1 text-sm text-slate-600">発生日：{sighting.occurred_at}</p>
                 </div>

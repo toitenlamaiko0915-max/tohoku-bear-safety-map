@@ -61,7 +61,7 @@ public/data/bear_sightings.csv
 | id | 一意のID |
 | prefecture | 県名 |
 | municipality | 市町村名 |
-| area | 地区名。詳細住所は入れない |
+| area | 地区名。詳細住所は入れず「〇〇地区周辺」のように概略で記載する |
 | occurred_at | 発生日時 |
 | event_type | 目撃、痕跡、人身被害、捕獲済み |
 | description | 内容 |
@@ -69,8 +69,8 @@ public/data/bear_sightings.csv
 | source_url | 公式情報ページURL |
 | latitude | 緯度 |
 | longitude | 経度 |
-| accuracy_m | 位置精度。例: 500 |
-| status | 確認済み、確認中、参考情報など |
+| accuracy_m | 位置精度。実データ運用では1000〜3000mを基本に広めに設定する |
+| status | 確認済み、参考情報など |
 
 ## ページ構成
 
@@ -86,6 +86,8 @@ public/data/bear_sightings.csv
 緊急時は110番、人身被害時は119番へ連絡してください。このサイトの情報だけで安全判断を行わず、必ず自治体・警察・消防など公的機関の情報を確認してください。
 
 公式情報へのリンクは本番用URLを設定しています。リンク先の掲載元と更新状況を確認してください。
+
+地図上の位置は概略表示です。実際の詳細情報は各県の公式情報をご確認ください。CSVには民家・学校・施設などをピンポイントに示す緯度経度を入力しないでください。
 
 ## 今後の拡張案
 
