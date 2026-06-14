@@ -17,10 +17,15 @@ export default function HomePage() {
             東北6県の公式クマ出没情報をまとめて確認できます。このサイトは速報・参考情報です。
             緊急時は110番、人身被害時は119番へ連絡してください。
           </p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded border border-civic-100 bg-civic-50 px-3 py-2 text-sm font-extrabold text-civic-800">
-            <CalendarDays aria-hidden="true" className="h-4 w-4 flex-none" />
-            最終更新日：2026年6月7日
-          </p>
+          <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
+            <p className="inline-flex items-center gap-2 rounded border border-civic-100 bg-civic-50 px-3 py-2 text-sm font-extrabold text-civic-800">
+              <CalendarDays aria-hidden="true" className="h-4 w-4 flex-none" />
+              最終更新日：2026年6月14日
+            </p>
+            <Link href="/updates" className="text-sm font-extrabold text-forest-800 underline-offset-4 hover:underline">
+              更新履歴を見る
+            </Link>
+          </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             <Link
               href="/map"
