@@ -28,7 +28,7 @@ export default function UpdatesPage() {
         <ul className="mt-5 grid gap-3 text-sm leading-7 text-slate-700">
           <li className="rounded border border-slate-200 bg-slate-50 p-3">東北6県の公式クマ出没情報を確認しました。</li>
           <li className="rounded border border-slate-200 bg-slate-50 p-3">
-            公式情報に基づき、掲載可能な範囲でCSVデータを更新しました。
+            各県の公式情報で確認できる最新日分を確認し、掲載可能な範囲でCSVデータを更新しました。
           </li>
           <li className="rounded border border-slate-200 bg-slate-50 p-3">くま出没一覧の表示件数を調整しました。</li>
           <li className="rounded border border-slate-200 bg-slate-50 p-3">/updates ページを新規作成しました。</li>
