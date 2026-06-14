@@ -8,7 +8,7 @@ export type Prefecture = (typeof prefectures)[number];
 
 export type BearEventType = (typeof eventTypes)[number];
 
-export type BearSightingStatus = "確認済み" | "確認中" | "参考情報";
+export type BearSightingStatus = "published" | "draft" | "archived";
 
 export type FreshnessType = (typeof freshnessTypes)[number];
 

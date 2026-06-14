@@ -109,6 +109,18 @@ export function getDisplayDescription(description: string): string {
   return normalizedDescription.length > 0 ? normalizedDescription : fallbackDescription;
 }
 
+export function formatSightingStatus(status: BearSighting["status"]): string {
+  if (status === "published") {
+    return "掲載中";
+  }
+
+  if (status === "archived") {
+    return "非掲載";
+  }
+
+  return "下書き";
+}
+
 export function getFreshness(occurredAt: string, now = new Date()): FreshnessType {
   const occurred = parseOccurredAt(occurredAt);
   const diffMs = Math.max(0, now.getTime() - occurred.getTime());
@@ -150,11 +162,11 @@ function normalizeEventType(value: string): BearEventType {
 }
 
 function normalizeStatus(value: string): BearSighting["status"] {
-  if (value === "確認済み" || value === "確認中" || value === "参考情報") {
+  if (value === "published" || value === "draft" || value === "archived") {
     return value;
   }
 
-  return "参考情報";
+  return "draft";
 }
 
 function parseOccurredAt(value: string): Date {

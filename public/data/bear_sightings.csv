@@ -1,7 +1,21 @@
 id,prefecture,municipality,area,occurred_at,event_type,description,source_name,source_url,latitude,longitude,accuracy_m,status
-1,青森県,青森市,市内山沿い地区周辺,2026-06-06 07:30,目撃,クマの目撃情報。位置は概略表示です。,くまログあおもり,https://kumalog-aomori.info/,40.8244,140.7400,2000,参考情報
-2,岩手県,盛岡市,市内北部地区周辺,2026-06-05 18:20,痕跡,足跡・フンなどの痕跡情報。位置は概略表示です。,Bears,https://www.pref.iwate.jp/kurashikankyou/shizen/yasei/1049881/1096154.html,39.7350,141.1400,2500,参考情報
-3,宮城県,仙台市,市内西部地区周辺,2026-06-04 09:10,目撃,クマの目撃情報。位置は概略表示です。,令和8年度クマ目撃等情報,https://www.pref.miyagi.jp/soshiki/sizenhogo/r8kumamokugeki.html,38.2850,140.7950,2500,参考情報
-4,秋田県,秋田市,市内東部地区周辺,2026-06-06 07:30,目撃,クマの目撃情報。位置は概略表示です。,クマダス,https://kumadas.net/,39.7350,140.1500,2500,参考情報
-5,山形県,山形市,市内南部地区周辺,2026-06-03 16:40,捕獲済み,捕獲済みの公式情報。詳細は公式情報ページをご確認ください。,ツキノワグマ目撃マップ／けものおと2,https://www.pref.yamagata.jp/050011/kurashi/shizen/seibutsu/about_kuma/kuma/index.html,38.2200,140.3400,2000,参考情報
-6,福島県,福島市,市内西部地区周辺,2026-06-01 06:50,人身被害,人身被害に関する公式情報。詳細は公式情報ページをご確認ください。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.7600,140.4200,3000,確認済み
+1,青森県,青森市,宮田地区周辺,2026-06-14,痕跡,フンの痕跡情報。位置は概略表示です。,くまログあおもり,https://kumalog-aomori.info/,40.8400,140.8500,3000,published
+2,宮城県,富谷市,明石原川戸地区周辺,2026-06-10,目撃,クマ1頭の目撃情報。位置は概略表示です。,令和8年度クマ目撃等情報,https://www.pref.miyagi.jp/soshiki/sizenhogo/r8kumamokugeki.html,38.4000,140.8950,3000,published
+3,宮城県,利府町,沢乙地区周辺,2026-06-10,目撃,クマ1頭の目撃情報。位置は概略表示です。,令和8年度クマ目撃等情報,https://www.pref.miyagi.jp/soshiki/sizenhogo/r8kumamokugeki.html,38.3300,140.9700,3000,published
+4,秋田県,にかほ市,大島地区周辺,2026-06-14,目撃,クマ2頭の目撃情報。位置は概略表示です。,クマダス,https://kumadas.net/,39.2200,139.9100,3000,published
+5,山形県,庄内町,堀野地区周辺,2026-06-14,目撃,クマ1頭の目撃情報。位置は概略表示です。,ツキノワグマ目撃マップ／けものおと2,https://www.pref.yamagata.jp/050011/kurashi/shizen/seibutsu/about_kuma/kuma/index.html,38.8200,139.9300,3000,published
+6,山形県,白鷹町,十王地区周辺,2026-06-14,目撃,クマ1頭の目撃情報。位置は概略表示です。,ツキノワグマ目撃マップ／けものおと2,https://www.pref.yamagata.jp/050011/kurashi/shizen/seibutsu/about_kuma/kuma/index.html,38.1800,140.0900,3000,published
+7,山形県,河北町,西里地区周辺,2026-06-14,目撃,クマ1頭の目撃情報。位置は概略表示です。,ツキノワグマ目撃マップ／けものおと2,https://www.pref.yamagata.jp/050011/kurashi/shizen/seibutsu/about_kuma/kuma/index.html,38.4400,140.3100,3000,published
+8,山形県,白鷹町,高玉地区周辺,2026-06-14,目撃,クマ1頭の目撃情報。位置は概略表示です。,ツキノワグマ目撃マップ／けものおと2,https://www.pref.yamagata.jp/050011/kurashi/shizen/seibutsu/about_kuma/kuma/index.html,38.1900,140.0500,3000,published
+9,福島県,喜多方市,町西地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.6500,139.8600,3000,published
+10,福島県,喜多方市,扇田地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.6500,139.8700,3000,published
+11,福島県,郡山市,熱海町高玉地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.4900,140.2800,3000,published
+12,福島県,喜多方市,松山町村松地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.6700,139.8800,3000,published
+13,福島県,郡山市,熱海町高玉地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.5000,140.2500,3000,published
+14,福島県,二本松市,岳温泉地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.6100,140.3600,3000,published
+15,福島県,会津若松市,湊町赤井地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.5200,140.0200,3000,published
+16,福島県,柳津町,芋小屋地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.4200,139.7000,3000,published
+17,福島県,福島市,松川町浅川地区周辺,2026-05-15,痕跡,足跡等の痕跡情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.6800,140.4700,3000,published
+18,福島県,本宮市,岩根地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.4700,140.3300,3000,published
+19,福島県,西郷村,真船地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.1400,140.1100,3000,published
+20,福島県,福島市,在庭坂地区周辺,2026-05-15,目撃,クマ1頭の目撃情報。位置は概略表示です。,福島県ツキノワグマ目撃情報,https://www.pref.fukushima.lg.jp/sec/16035b/tukinowaguma-mokugeki.html,37.7700,140.3500,3000,published

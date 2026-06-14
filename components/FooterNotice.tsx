@@ -1,9 +1,24 @@
+import Link from "next/link";
 import { AlertTriangle } from "lucide-react";
 
 export function FooterNotice() {
   return (
     <footer className="border-t border-slate-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <nav aria-label="補足ページ" className="mb-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold text-forest-800">
+          <Link href="/updates" className="underline-offset-4 hover:underline">
+            更新履歴
+          </Link>
+          <Link href="/about" className="underline-offset-4 hover:underline">
+            このサイトについて
+          </Link>
+          <Link href="/official-links" className="underline-offset-4 hover:underline">
+            公式情報へのリンク
+          </Link>
+          <Link href="/map" className="underline-offset-4 hover:underline">
+            地図
+          </Link>
+        </nav>
         <div className="rounded border border-amber-300 bg-amber-50 p-4 text-sm leading-7 text-slate-800">
           <div className="mb-2 flex items-center gap-2 font-extrabold text-amber-900">
             <AlertTriangle aria-hidden="true" className="h-5 w-5" />

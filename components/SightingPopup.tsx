@@ -1,5 +1,5 @@
 import type { BearSighting } from "@/lib/types";
-import { eventTypeStyles, getDisplayDescription, sourceNotice } from "@/lib/sightings";
+import { eventTypeStyles, formatSightingStatus, getDisplayDescription, sourceNotice } from "@/lib/sightings";
 
 export function SightingPopup({ sighting }: { sighting: BearSighting }) {
   return (
@@ -26,7 +26,7 @@ export function renderSightingPopupHtml(sighting: BearSighting): string {
       <p class="sighting-popup__row">${escapeHtml(sourceNotice)}</p>
       <p class="sighting-popup__row"><strong>範囲：</strong>${escapeHtml(accuracy)}</p>
       <p class="sighting-popup__row">地図上の位置は概略表示です。</p>
-      <p class="sighting-popup__row"><strong>状態：</strong>${escapeHtml(sighting.status)}</p>
+      <p class="sighting-popup__row"><strong>状態：</strong>${escapeHtml(formatSightingStatus(sighting.status))}</p>
       <p class="sighting-popup__row"><strong>情報源：</strong>${escapeHtml(sighting.source_name)}</p>
       <p class="sighting-popup__row"><a class="sighting-popup__link" href="${escapeAttribute(sighting.source_url)}" target="_blank" rel="noopener noreferrer">詳細：公式情報ページへ</a></p>
       <p class="sighting-popup__row">外部サイトへ移動します</p>

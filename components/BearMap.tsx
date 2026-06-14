@@ -4,7 +4,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ExternalLink, Loader2, MapPinned, ShieldAlert } from "lucide-react";
 import { MapFilters } from "@/components/MapFilters";
 import { renderSightingPopupHtml } from "@/components/SightingPopup";
-import { eventTypeStyles, freshnessStyles, getDisplayDescription, getFreshness, parseBearSightingsCsv, sortSightingsByDate, sourceNotice } from "@/lib/sightings";
+import {
+  eventTypeStyles,
+  freshnessStyles,
+  getDisplayDescription,
+  getFreshness,
+  parseBearSightingsCsv,
+  sortSightingsByDate,
+  sourceNotice
+} from "@/lib/sightings";
 import { eventTypes, freshnessTypes, prefectures, type BearEventType, type BearSighting, type FreshnessType, type Prefecture } from "@/lib/types";
 
 type LeafletModule = typeof import("leaflet");
@@ -77,11 +85,18 @@ export default function BearMap() {
         center: [39.25, 140.95],
         zoom: 6,
         minZoom: 5,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        attributionControl: false
       });
 
+      L.control
+        .attribution({
+          prefix: '<a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer">Leaflet</a>'
+        })
+        .addTo(map);
+
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
       }).addTo(map);
 
       accuracyLayerRef.current = L.layerGroup().addTo(map);
@@ -106,8 +121,10 @@ export default function BearMap() {
     };
   }, []);
 
+  const publishedSightings = useMemo(() => sightings.filter((sighting) => sighting.status === "published"), [sightings]);
+
   const filteredSightings = useMemo(() => {
-    return sightings.filter((sighting) => {
+    return publishedSightings.filter((sighting) => {
       const freshness = getFreshness(sighting.occurred_at);
       return (
         selectedPrefectures.includes(sighting.prefecture as Prefecture) &&
@@ -115,7 +132,7 @@ export default function BearMap() {
         selectedFreshness.includes(freshness)
       );
     });
-  }, [selectedEventTypes, selectedFreshness, selectedPrefectures, sightings]);
+  }, [publishedSightings, selectedEventTypes, selectedFreshness, selectedPrefectures]);
 
   useEffect(() => {
     const L = leafletRef.current;
@@ -181,7 +198,7 @@ export default function BearMap() {
         selectedPrefectures={selectedPrefectures}
         selectedEventTypes={selectedEventTypes}
         selectedFreshness={selectedFreshness}
-        totalCount={sightings.length}
+        totalCount={publishedSightings.length}
         filteredCount={filteredSightings.length}
         onTogglePrefecture={togglePrefecture}
         onToggleEventType={toggleEventType}
