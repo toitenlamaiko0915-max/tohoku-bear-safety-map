@@ -2,774 +2,399 @@
 
 ## 東北クマ出没・安全確認マップ｜公開・バックアップ・GitHub運用管理
 
-* アプリ名：東北クマ出没・安全確認マップ
-* プロジェクトコード：TBM
-* 技術スタック：Next.js / React / TypeScript / Vercel / CSVデータ管理
-* 現在の状態：既存アプリあり・公開済み・一部運用中
-* 最終更新日：2026-06-20
+| 項目 | 内容 |
+| --- | --- |
+| プロジェクトコード | TBM |
+| 本番URL | https://tohoku-bear-safety-map.vercel.app/ |
+| GitHub | https://github.com/toitenlamaiko0915-max/tohoku-bear-safety-map |
+| 公開先 | Vercel |
+| 最終更新日 | 2026-06-20 |
 
 ---
 
 ## 1. このファイルの目的
 
-このファイルは、**東北クマ出没・安全確認マップ** の公開・保守・バックアップ・GitHub運用に関する情報を1か所で管理するためのドキュメントです。
-
-主に以下を目的とします。
-
-* ローカル環境での起動手順を明確にする
-* GitHubでの変更管理ルールを統一する
-* 公開前チェックの漏れを防ぐ
-* Vercel等へのデプロイ手順を整理する
-* トラブル発生時の確認項目を残す
-* バックアップ・ロールバック方針を明確にする
-* ChatGPT / Codex / GitHub / Vercel の作業が迷子にならないようにする
+ローカル起動、GitHub運用、Vercel公開、バックアップ、ロールバック、障害時確認を再現できるようにする。
 
 ---
 
-## 2. アプリ概要
+## 2. 現在の構成
 
-### アプリの目的
+| 項目 | 確認済み内容 |
+| --- | --- |
+| フレームワーク | Next.js 15.5.19（App Router、宣言は`^15.3.5`） |
+| UI | React 19.2.7 / Tailwind CSS 3.4.19 / lucide-react |
+| 地図 | Leaflet 1.9 / OpenStreetMapタイル |
+| 言語 | TypeScript 5.9.3（宣言は`^5.7.2`） |
+| データ | `public/data/bear_sightings.csv` |
+| パッケージ管理 | npm / `package-lock.json` |
+| Next.js設定 | `next.config.mjs` |
+| Vercel設定 | リポジトリ内に`vercel.json`なし。Vercelの自動判定を利用 |
+| 環境変数 | 必須変数なし。`NEXT_PUBLIC_SITE_URL`は任意 |
+| 自動テスト | 未実装 |
 
-東北地方のクマ出没・目撃情報を、地図と一覧で確認できるようにし、地域住民・旅行者・登山者などの安全確認を支援する。
-
-公式情報をもとに、利用者が危険エリアや最新状況を把握しやすくすることを目的とする。
-
-### 想定ユーザー
-
-* 東北地方に住む人
-* 通勤・通学・買い物で屋外移動する人
-* 登山・釣り・キャンプ・観光で東北を訪れる人
-* 家族や高齢者の安全を確認したい人
-
----
-
-## 3. 開発環境
-
-### 使用技術
-
-| 項目       | 内容               |
-| -------- | ---------------- |
-| フレームワーク  | Next.js          |
-| UI       | React            |
-| 言語       | TypeScript       |
-| データ管理    | CSV              |
-| デプロイ候補   | Vercel / Netlify |
-| 現在の主な公開先 | Vercel想定         |
-| バージョン管理  | Git / GitHub     |
-
-### 前提ツール
-
-ローカル作業を行う場合、以下が必要。
-
-* Node.js
-* npm または pnpm
-* Git
-* GitHubアカウント
-* Vercelアカウント
-* コードエディタ
-
-  * 例：VS Code
-* GitHub Desktop
-
-  * 初心者向け運用では使用推奨
+Node.jsの固定バージョンは`package.json`に未指定。Vercelとローカルで同じメジャーバージョンを使う方針だが、正式バージョンは要確認。
 
 ---
 
-## 4. ローカル起動手順
+## 3. ローカル起動手順
 
-### 4-1. リポジトリを取得する
+### 初回
 
 ```bash
-git clone <GitHubリポジトリURL>
-cd <プロジェクトフォルダ名>
-```
-
-GitHub Desktopを使う場合は、以下の手順でもよい。
-
-1. GitHub Desktopを開く
-2. `File` → `Clone repository`
-3. 対象リポジトリを選択
-4. ローカルに保存する
-
----
-
-### 4-2. 依存パッケージをインストールする
-
-```bash
+git clone https://github.com/toitenlamaiko0915-max/tohoku-bear-safety-map.git
+cd tohoku-bear-safety-map
 npm install
 ```
 
-pnpmを使用している場合。
+CIや再現性を優先する場合は、ロックファイルに基づく以下を使う。
 
 ```bash
-pnpm install
+npm ci
 ```
 
----
-
-### 4-3. ローカルサーバーを起動する
+### 開発サーバー
 
 ```bash
 npm run dev
 ```
 
-pnpmを使用している場合。
+通常の確認URL：
+
+```text
+http://127.0.0.1:3000/
+http://127.0.0.1:3000/map
+http://127.0.0.1:3000/updates
+http://127.0.0.1:3000/about
+http://127.0.0.1:3000/official-links
+http://127.0.0.1:3000/safety
+http://127.0.0.1:3000/sitemap.xml
+http://127.0.0.1:3000/robots.txt
+```
+
+### 検証コマンド
 
 ```bash
-pnpm dev
+npm run typecheck
+npm run build
 ```
+
+本番ビルドをローカル起動する場合：
+
+```bash
+npm run start
+```
+
+`npm run build`が成功した後に実行する。
 
 ---
 
-### 4-4. ブラウザで確認する
+## 4. GitHub管理方針
 
-以下を開く。
-
-```text
-http://localhost:3000
-```
-
-確認対象の例。
-
-```text
-http://localhost:3000/
-http://localhost:3000/map
-http://localhost:3000/updates
-```
+* `main`は本番公開可能な状態を保つ
+* `main`へ直接pushしない
+* 作業ごとにブランチを作る
+* 変更範囲を小さく保つ
+* CSV更新、UI変更、仕様変更、設定変更を可能な限り分ける
+* Pull Requestの`Files changed`とテスト結果を人間が確認する
+* CodexはPRを作成してもマージしない
+* force push、履歴改変、ブランチ削除は明示承認なしに行わない
 
 ---
 
-## 5. GitHub管理方針
+## 5. ブランチ運用
 
-### 基本方針
+| 接頭辞 | 用途 | 例 |
+| --- | --- | --- |
+| `codex/` | Codex作業 | `codex/tbm-cx-001-management-docs` |
+| `docs/` | 文書 | `docs/update-spec` |
+| `data/` | CSV・更新日 | `data/update-sightings-20260620` |
+| `fix/` | 不具合 | `fix/csv-error-state` |
+| `feat/` | 機能 | `feat/map-date-filter` |
+| `chore/` | 設定・保守 | `chore/update-node-version` |
 
-GitHubは、以下の目的で使用する。
+### 手順
 
-* ソースコードの履歴管理
-* CSVデータ更新の履歴管理
-* デプロイ前の確認
-* 不具合発生時の原因調査
-* 過去状態への復元
-* Codex作業の確認
-* PRによる安全な変更反映
+```bash
+git switch main
+git pull --ff-only origin main
+git switch -c <branch-name>
+```
 
-### 原則
+作業後：
 
-* `main` ブランチは常に公開可能な状態を保つ
-* 直接 `main` に大きな変更を入れない
-* 変更内容はできるだけ小さく分ける
-* CSV更新、UI修正、設定変更は混ぜすぎない
-* Codexによる変更は、PRで確認してからMergeする
-* Merge前に必ず `Files changed` を確認する
+```bash
+git status --short
+git diff --check
+git diff --name-only main...HEAD
+```
+
+対象外ファイルが含まれていないことを確認してからcommit・pushする。
 
 ---
 
 ## 6. コミットルール
 
-### コミットメッセージの基本形
+Conventional Commitsを基本とする。
+
+| 種別 | 用途 | 例 |
+| --- | --- | --- |
+| `docs` | 文書 | `docs: align management documents with implementation` |
+| `data` | CSVデータ | `data: update official bear sightings` |
+| `fix` | 不具合 | `fix: handle missing map coordinates` |
+| `feat` | 機能 | `feat: add map update date` |
+| `test` | テスト | `test: add CSV parser coverage` |
+| `chore` | 設定・保守 | `chore: document Node.js version` |
+
+* 1コミットの目的を明確にする
+* APIキー、トークン、個人情報をコミットメッセージや本文へ含めない
+* CSV更新では対象日・対象県・出典確認結果をPR本文に残す
+
+---
+
+## 7. Pull Request運用
+
+### PR本文に含めること
+
+* 目的と変更概要
+* 変更ファイル一覧
+* 実行したテストと結果
+* 未確認事項・リスク
+* 安全情報・個人情報への影響
+* Vercel Preview確認結果
+* ロールバック方法
+
+### マージ前
+
+* [ ] 対象外ファイルがない
+* [ ] typecheck成功
+* [ ] build成功
+* [ ] 主要ページを確認
+* [ ] スマホ幅を確認
+* [ ] CSV更新時は列数・ID・日付・公式URLを確認
+* [ ] 詳細住所・ピンポイント座標・独自の安全判断がない
+* [ ] Vercel PreviewがReady
+* [ ] 人間が`Files changed`を確認
+
+---
+
+## 8. Vercelデプロイ手順
+
+### 通常フロー
+
+1. 作業ブランチをGitHubへpushする
+2. Pull Requestを作成する
+3. Vercel PreviewがReadyになるまで待つ
+4. Previewで主要ページとデータを確認する
+5. 人間がPRを`main`へマージする
+6. VercelのProduction DeploymentがReadyになるまで待つ
+7. 本番URLを確認する
+8. `PROJECT_LOG.md`、`TEST_LOG.md`、必要に応じて`/updates`を更新する
+
+### 本番確認URL
+
+* https://tohoku-bear-safety-map.vercel.app/
+* https://tohoku-bear-safety-map.vercel.app/map
+* https://tohoku-bear-safety-map.vercel.app/updates
+* https://tohoku-bear-safety-map.vercel.app/about
+* https://tohoku-bear-safety-map.vercel.app/official-links
+* https://tohoku-bear-safety-map.vercel.app/safety
+* https://tohoku-bear-safety-map.vercel.app/sitemap.xml
+* https://tohoku-bear-safety-map.vercel.app/robots.txt
+
+### Vercelで確認する項目
+
+* Deploymentの状態が`Ready`
+* Productionが対象の`main`コミットを参照している
+* Build Logsにエラーがない
+* PreviewとProductionの環境変数差分がない
+* 独自ドメインを追加した場合はSSL・リダイレクトが正常
+
+Vercelプロジェクトの所有者、権限、保持期間、請求設定はリポジトリから確認できないため要確認。
+
+---
+
+## 9. 公開前チェックリスト
+
+### アプリ
+
+* [ ] 主要6ページが表示できる
+* [ ] `/sitemap.xml`・`/robots.txt`がHTTP 200
+* [ ] 地図・一覧・フィルターが動作する
+* [ ] 一覧件数とピン件数の差を説明できる
+* [ ] トップページの最終更新日が正しい
+* [ ] `/updates`に必要な更新履歴がある
+* [ ] 390px幅とPC幅で大きく崩れない
+
+### CSV・安全情報
+
+* [ ] ヘッダーが現行13列と一致する
+* [ ] 全行の列数が一致する
+* [ ] ID重複がない
+* [ ] `occurred_at`が確認可能な発生日・目撃日である
+* [ ] `source_url`が公式情報で空欄がない
+* [ ] 詳細住所や個人を特定できる情報がない
+* [ ] 座標が概略位置で`accuracy_m`が適切
+* [ ] 独自の安全・危険断定がない
+* [ ] 仮URLやプレースホルダーURLがない
+
+### Git・Vercel
+
+* [ ] `git diff --check`に問題がない
+* [ ] 変更対象が依頼範囲内
+* [ ] typecheck・build成功
+* [ ] PR本文に未確認事項がある
+* [ ] Preview確認済み
+
+---
+
+## 10. 環境変数の管理
+
+### 現在
+
+アプリ実行に必須の秘密情報はない。
+
+`app/sitemap.ts`と`app/robots.ts`は次を参照する。
 
 ```text
-種別: 変更内容
+NEXT_PUBLIC_SITE_URL
 ```
 
-### 種別の例
+未設定時は`https://tohoku-bear-safety-map.vercel.app`を使用するため、現在は任意。
 
-| 種別         | 用途          |
-| ---------- | ----------- |
-| `feat`     | 新機能追加       |
-| `fix`      | 不具合修正       |
-| `data`     | CSVなどデータ更新  |
-| `docs`     | ドキュメント更新    |
-| `chore`    | 設定・整理・軽微な保守 |
-| `deploy`   | デプロイ関連      |
-| `refactor` | 動作を変えない整理   |
+### ルール
 
-### コミットメッセージ例
-
-```text
-data: update latest bear sighting records
-```
-
-```text
-docs: add deploy operation guide
-```
-
-```text
-fix: correct map display for CSV records
-```
-
-```text
-chore: update site last modified date
-```
-
-```text
-deploy: prepare production release
-```
+* 秘密情報を`NEXT_PUBLIC_`へ入れない
+* APIキー、パスワード、トークンをGitへコミットしない
+* `.env.local`はローカル専用とする
+* 新しい環境変数を追加する場合は`.env.example`と本書を更新する
+* VercelではProduction・Preview・Developmentの適用範囲を確認する
+* 値を変更した場合は再デプロイとロールバック方法を記録する
 
 ---
 
-## 7. ブランチ運用
+## 11. バックアップ方針
 
-### 基本ブランチ
+### GitHub
 
-| ブランチ        | 役割             |
-| ----------- | -------------- |
-| `main`      | 本番公開用ブランチ      |
-| `feature/*` | 新機能追加          |
-| `fix/*`     | 不具合修正          |
-| `data/*`    | CSV・更新日などデータ保守 |
-| `docs/*`    | ドキュメント整備       |
-| `chore/*`   | 設定整理・軽微な保守     |
+* コード、CSV、文書の正本はGitHubの`main`
+* 変更はPRとコミット履歴で追跡する
+* 重要な公開版は必要に応じてタグを付ける
 
-### ブランチ名の例
-
-```text
-data/update-bear-sightings-2026-06-20
-```
-
-```text
-docs/add-deploy-guide
-```
-
-```text
-fix/map-marker-display
-```
-
-```text
-chore/update-site-date
-```
-
----
-
-### ブランチ運用ルール
-
-* 作業前に `main` を最新化する
-* 作業ごとにブランチを分ける
-* 変更が終わったらPRを作成する
-* `Files changed` で変更内容を確認する
-* 問題がなければ `main` にMergeする
-* Merge後、Vercelのデプロイ状態を確認する
-
----
-
-## 8. 公開前チェックリスト
-
-公開前には、以下を確認する。
-
-### 8-1. 表示確認
-
-* [ ] トップページが表示される
-* [ ] `/map` が表示される
-* [ ] `/updates` が表示される
-* [ ] 地図が表示される
-* [ ] 一覧が表示される
-* [ ] スマホ幅で崩れていない
-* [ ] PC幅で崩れていない
-* [ ] 不要なエラー表示がない
-
----
-
-### 8-2. データ確認
-
-* [ ] CSVが正しい場所にある
-* [ ] CSVの列名が壊れていない
-* [ ] CSVの文字コードに問題がない
-* [ ] 最新データが反映されている
-* [ ] source_url が公式情報になっている
-* [ ] 位置情報が概略表示になっている
-* [ ] 個人宅などを特定しすぎる情報がない
-* [ ] 出没日・市町村・内容が表示されている
-
----
-
-### 8-3. 安全・倫理確認
-
-* [ ] 公式情報をもとにしている
-* [ ] 未確認情報を断定していない
-* [ ] 危険を過度に煽る表現になっていない
-* [ ] 利用者が誤解しない注意書きがある
-* [ ] 「最終判断は自治体・警察・公式情報を確認」と伝えている
-
----
-
-### 8-4. GitHub確認
-
-* [ ] PRが作成されている
-* [ ] `Files changed` を確認した
-* [ ] 想定外のファイル変更がない
-* [ ] 不要なファイルが含まれていない
-* [ ] コミットメッセージが分かりやすい
-* [ ] Merge前に差分を確認した
-
----
-
-### 8-5. デプロイ確認
-
-* [ ] VercelでBuildが成功している
-* [ ] VercelでStatusが `Ready` になっている
-* [ ] 本番URLでトップページを確認した
-* [ ] 本番URLで `/map` を確認した
-* [ ] 本番URLで `/updates` を確認した
-* [ ] 反映内容が意図通りである
-* [ ] スマホでも確認した
-
----
-
-## 9. デプロイ候補
-
-### 第1候補：Vercel
-
-Next.jsとの相性がよく、現在の公開運用にも適している。
-
-想定用途。
-
-* 本番公開
-* PR Preview
-* 自動デプロイ
-* mainブランチへのMerge後の自動反映
-
----
-
-### 第2候補：Netlify
-
-必要に応じて候補にする。
-
-想定用途。
-
-* Vercel以外の公開先候補
-* 静的サイト寄りの構成になった場合
-* バックアップ的な公開先
-
----
-
-### 現時点の方針
-
-現時点では、**Vercelを主なデプロイ先として扱う**。
-
-ただし、正式な運用方針が未確定の場合は、未確定事項として管理する。
-
----
-
-## 10. デプロイ手順
-
-### 10-1. 通常のデプロイ手順
-
-1. ローカルまたはCodexで修正する
-2. GitHubに変更をPushする
-3. PRを作成する
-4. GitHubの `Files changed` を確認する
-5. 問題なければ `main` にMergeする
-6. Vercelで自動デプロイが開始される
-7. VercelのStatusが `Ready` になるまで確認する
-8. 本番URLで表示確認する
-9. `/map` と `/updates` を確認する
-10. 問題なければ作業完了とする
-
----
-
-### 10-2. GitHub Desktopを使う場合
-
-1. `Current Branch` が作業用ブランチになっていることを確認する
-2. `Changes` で変更内容を確認する
-3. Summaryにコミットメッセージを書く
-4. `Commit to <branch名>` を押す
-5. `Push origin` を押す
-6. GitHub上でPRを作成する
-7. `Files changed` を確認する
-8. 問題なければMergeする
-9. Vercelで `Ready` を確認する
-
----
-
-### 10-3. Codexに作業を依頼した場合
-
-1. Codexに作業指示を貼る
-2. Codexの変更内容を確認する
-3. プレビューで `/map` と `/updates` を確認する
-4. PRを作成させる
-5. GitHubの `Files changed` で差分を確認する
-6. 問題があればCodexに修正依頼する
-7. 問題がなければMergeする
-8. Vercelで `Ready` を確認する
-9. 本番URLを確認する
-
----
-
-## 11. 環境変数の管理
-
-### 基本方針
-
-環境変数は、公開してはいけない情報を管理するために使用する。
-
-例。
-
-* APIキー
-* 外部サービスの認証情報
-* 管理用トークン
-* 非公開URL
-* シークレットキー
-
----
-
-### 管理ルール
-
-* `.env.local` はGitHubにコミットしない
-* `.env.example` に必要な変数名だけ記載する
-* 実際の値はVercelなどの管理画面に設定する
-* APIキーや秘密情報をCSVやソースコードに直接書かない
-* GitHubに誤って秘密情報を上げた場合は、すぐにキーを無効化・再発行する
-
----
-
-### `.env.example` の例
-
-```text
-NEXT_PUBLIC_SITE_URL=
-NEXT_PUBLIC_MAP_PROVIDER=
-```
-
-秘密情報ではなく、ブラウザ側で公開されても問題ない値のみ `NEXT_PUBLIC_` を使用する。
-
----
-
-## 12. バックアップ方針
-
-### バックアップ対象
-
-* ソースコード
-* CSVデータ
-* ドキュメント
-* 設定ファイル
-* 更新履歴
-* デプロイ設定
-* 重要なPR・Issue・作業ログ
-
----
-
-### GitHubによるバックアップ
-
-GitHubを主なバックアップ先とする。
-
-以下を守る。
-
-* 変更ごとにコミットする
-* `main` は安定版として維持する
-* 重要な区切りではタグを作成する
-* 不要なファイルを含めない
-* CSV更新は履歴が追えるようにする
-
----
-
-### ローカルバックアップ
-
-必要に応じて、以下を保存する。
-
-* ZIP形式のプロジェクトコピー
-* CSVデータの控え
-* 重要なスクリーンショット
-* 公開URL
-* Vercel設定のメモ
-
----
-
-### タグ管理
-
-大きな節目ではGitタグを作成する。
-
-タグ名の例。
-
-```text
-v1.0.0
-v1.0.1
-backup-2026-06-20
-release-2026-06-20
-```
-
-タグを使うタイミング。
-
-* 初回公開時
-* 大きな機能追加後
-* データ構造を変更した後
-* 安定版として保存したいとき
-* 大きな修正前の退避として残したいとき
-
----
-
-## 13. ロールバック方針
-
-ロールバックとは、問題が起きたときに以前の安全な状態へ戻すこと。
-
-### 13-1. Vercel側で戻す場合
-
-Vercelに過去のデプロイ履歴が残っている場合、正常だったデプロイを再度本番に反映する。
-
-確認すること。
-
-* 正常だったデプロイ日時
-* 対象ブランチ
-* 対象コミット
-* 本番URLでの表示
-* `/map` と `/updates` の表示
-
----
-
-### 13-2. GitHub側で戻す場合
-
-GitHub上で問題のある変更を取り消す。
-
-方法の例。
+タグ例：
 
 ```bash
-git revert <問題のあるコミットID>
+git tag -a v0.1.0 -m "MVP baseline"
+git push origin v0.1.0
 ```
 
-または、PR単位でRevertする。
+タグ作成は人間が公開内容を確認してから行う。
 
-注意点。
+### CSV
 
-* いきなり履歴を削除しない
-* 原則として `revert` を使う
-* 戻す前に、どの変更が原因か確認する
-* CSVだけの問題なのか、コードの問題なのかを分ける
+* 更新前のCSVはGit履歴で復元可能にする
+* 大量更新では、対象日・対象県・出典URL・追加件数をPR本文へ記録する
+* 個人情報を含む原本や取得資料を公開リポジトリへ保存しない
 
----
+### 追加バックアップ
 
-### 13-3. ロールバック後の確認
-
-* [ ] トップページが表示される
-* [ ] `/map` が表示される
-* [ ] `/updates` が表示される
-* [ ] 地図と一覧が表示される
-* [ ] Vercelが `Ready` になっている
-* [ ] 本番URLで問題が解消している
-* [ ] GitHubにロールバック理由を残した
+GitHub障害に備える場合は、定期的にローカルcloneまたはGit bundleを別媒体へ保管する。頻度・保管先・担当者は未確定。
 
 ---
 
-## 14. トラブル時の確認項目
+## 12. ロールバック方針
 
-### 14-1. サイトが表示されない
+### Vercelで戻す
 
-確認すること。
+1. VercelのDeploymentsを開く
+2. 直前の正常なProduction Deploymentを確認する
+3. `Promote to Production`等の復旧操作を人間が実行する
+4. 本番URLと主要ページを確認する
 
-* [ ] VercelのStatusが `Ready` か
-* [ ] Buildが失敗していないか
-* [ ] 本番URLが正しいか
-* [ ] GitHubのmainブランチが壊れていないか
-* [ ] 直前のコミットで大きな変更がないか
-* [ ] 環境変数が不足していないか
+### GitHubで戻す
 
----
+共有済み履歴を`reset --hard`やforce pushで書き換えない。
 
-### 14-2. 地図が表示されない
-
-確認すること。
-
-* [ ] 地図コンポーネントでエラーが出ていないか
-* [ ] 緯度・経度データが壊れていないか
-* [ ] CSVの列名が変わっていないか
-* [ ] ブラウザのコンソールにエラーがないか
-* [ ] 外部地図サービスの設定が必要ないか
-* [ ] スマホ・PCの両方で確認したか
-
----
-
-### 14-3. CSVデータが反映されない
-
-確認すること。
-
-* [ ] CSVファイルの保存場所が正しいか
-* [ ] CSVの列名が変わっていないか
-* [ ] 文字コードに問題がないか
-* [ ] カンマや改行でデータが崩れていないか
-* [ ] GitHubにCSV変更が反映されているか
-* [ ] Vercelで再デプロイされているか
-* [ ] キャッシュの影響がないか
-
----
-
-### 14-4. VercelのBuildが失敗する
-
-確認すること。
-
-* [ ] エラーログを確認したか
-* [ ] TypeScriptエラーがないか
-* [ ] import先が間違っていないか
-* [ ] 削除したファイルを参照していないか
-* [ ] package.jsonに問題がないか
-* [ ] 環境変数が不足していないか
-* [ ] ローカルで `npm run build` が通るか
-
----
-
-### 14-5. GitHubの差分が想定外に多い
-
-確認すること。
-
-* [ ] 不要なファイルを変更していないか
-* [ ] 自動整形で大量差分が出ていないか
-* [ ] package-lock.jsonが意図せず変わっていないか
-* [ ] CSV以外のファイルが変更されていないか
-* [ ] Codexが指示外の変更をしていないか
-* [ ] Merge前にPRを止めて確認する
-
----
-
-## 15. 公開後チェック
-
-デプロイ完了後、以下を確認する。
-
-* [ ] 本番URLを開ける
-* [ ] トップページの最終更新日が正しい
-* [ ] `/map` が表示される
-* [ ] `/updates` が表示される
-* [ ] 最新データが表示される
-* [ ] スマホ表示に問題がない
-* [ ] 公式情報へのリンクが機能している
-* [ ] 重大な表示崩れがない
-* [ ] GitHubのPRがMerge済みになっている
-* [ ] VercelのStatusが `Ready` になっている
-
----
-
-## 16. 作業完了時の記録
-
-作業完了後は、必要に応じて以下を記録する。
-
-```text
-作業日：
-作業内容：
-対象ブランチ：
-PR：
-コミット：
-デプロイ先：
-確認URL：
-確認結果：
-問題点：
-次回対応：
+```bash
+git switch -c revert/<ticket> main
+git revert <commit-sha>
+git push -u origin revert/<ticket>
 ```
 
----
+Revert PRを作り、人間が確認してマージする。
 
-## 17. 未確定事項
+### データだけ戻す
 
-現時点で未確定の事項は以下に記録する。
-
-### デプロイ関連
-
-* [ ] 正式な本番デプロイ先をVercelに固定するか
-* [ ] Netlifyをバックアップ公開先として使うか
-* [ ] 独自ドメインを設定するか
-* [ ] 本番URLの正式表記をどうするか
+対象コミットからCSVを復元し、新しいデータ修正PRとして提出する。復元理由と影響期間を`/updates`とPR本文へ記録する。
 
 ---
 
-### GitHub運用関連
+## 13. トラブル時の確認
 
-* [ ] `main` への直接コミットを禁止するか
-* [ ] PR必須運用にするか
-* [ ] Issue管理を使うか
-* [ ] タグ命名ルールを固定するか
-* [ ] リリースノートを作成するか
+### サイトが開かない
 
----
+* Vercel Deploymentの状態
+* 対象ドメイン・SSL
+* `main`の最新コミット
+* Build Logs
+* Vercel障害情報
 
-### バックアップ関連
+### 地図が表示されない
 
-* [ ] CSVの外部バックアップ先を用意するか
-* [ ] 月1回のZIPバックアップを行うか
-* [ ] 重要リリースごとにタグを作るか
-* [ ] Vercel設定の控えをどこに保存するか
+* ブラウザコンソール
+* Leaflet CSS・JS読込
+* OpenStreetMapタイル通信
+* 地図コンテナの高さ
+* CSV取得エラー
 
----
+### CSVが反映されない
 
-### 環境変数関連
+* `public/data/bear_sightings.csv`のパス
+* ヘッダー・列数・文字コード
+* `status`が`published`か
+* 日付・座標が解析可能か
+* Vercelの対象コミットとキャッシュ
 
-* [ ] 現在必要な環境変数の一覧
-* [ ] `.env.example` の作成有無
-* [ ] 外部API利用の有無
-* [ ] 地図サービスのAPIキーが必要かどうか
+### buildが失敗する
 
----
+* `npm ci`
+* `npm run typecheck`
+* `npm run build`
+* Node.jsバージョン
+* `package-lock.json`と`package.json`の差分
+* Build Logsの最初のエラー
 
-## 18. 次回確認すること
+### push・PRができない
 
-次回の公開・保守作業時に確認すること。
-
-* [ ] 現在の本番URLを記録する
-* [ ] GitHubリポジトリURLを記録する
-* [ ] Vercelプロジェクト名を記録する
-* [ ] 使用中のNode.jsバージョンを確認する
-* [ ] `npm run build` が通るか確認する
-* [ ] CSV更新時の標準手順を確定する
-* [ ] タグ管理ルールを確定する
-* [ ] ロールバック手順を実際の画面に合わせて確認する
-
----
-
-## 19. 運用メモ
-
-### 通常保守の流れ
-
-```text
-Codexに依頼
-↓
-プレビュー確認
-↓
-PR作成
-↓
-GitHubのFiles changed確認
-↓
-Merge
-↓
-VercelでReady確認
-↓
-本番URL確認
-↓
-作業完了
-```
+* 現在のブランチとcommitを確認
+* `git remote -v`を確認
+* GitHub Desktopのログイン状態を確認
+* Codex環境で`Device not configured`が出る場合、GitHub Desktopで`Publish branch`する
+* push後にGitHubの比較画面からDraft PRを作成する
+* 認証トークンをチャットやコードへ貼らない
 
 ---
 
-### 重要ルール
+## 14. 未確定・要確認
 
-* 公式情報をもとに更新する
-* 位置情報は概略表示にする
-* 個人が特定される情報は掲載しない
-* Merge前に必ず差分を見る
-* Vercelが `Ready` になってから本番確認する
-* 問題がある場合は無理にMergeしない
-* 不明点は未確定事項として残す
-
----
-
-## 20. 関連ドキュメント
-
-必要に応じて、以下のドキュメントとあわせて管理する。
-
-* `README.md`
-* `SPEC.md`
-* `PROJECT_LOG.md`
-* `CODEX_PROMPTS.md`
-* `TEST_LOG.md`
-* `DEPLOY.md`
+* Node.jsの固定バージョン
+* Vercelプロジェクトの所有者・管理権限
+* Production / Preview環境変数の設定状況
+* Vercelの復旧担当者と復旧判断基準
+* Gitタグを付けるリリース基準
+* 追加バックアップの頻度・保管先・保持期間
+* 公式リンクの定期確認担当と頻度
+* CSV更新担当・レビュー担当
+* 独自ドメインを使用するか
 
 ---
 
-## 21. このファイルの更新ルール
+## 15. 更新ルール
 
-このファイルは、以下のタイミングで更新する。
+以下の場合に更新する。
 
-* デプロイ先が変わったとき
-* GitHub運用ルールが変わったとき
-* バックアップ方針が変わったとき
-* ロールバック手順が確定したとき
-* 環境変数が追加されたとき
-* 公開前チェック項目を追加したいとき
-* トラブル対応で新しい知見が出たとき
-
-更新時は、コミットメッセージに以下を使う。
-
-```text
-docs: update deploy guide
-```
+* 開発・ビルド・起動手順が変わった
+* GitHub・ブランチ・コミットルールが変わった
+* Vercel設定・URL・環境変数が変わった
+* バックアップ・ロールバック方法が変わった
+* 障害対応で新しい知見が得られた
