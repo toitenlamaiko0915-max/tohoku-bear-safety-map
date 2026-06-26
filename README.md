@@ -1,44 +1,103 @@
+# 東北地方のクマ対策マップ
+
 An open-source map project for visualizing bear-related safety information in Japan's Tohoku region.
 
-# Tohoku Bear Safety Map
+日本の東北地方におけるクマ関連の安全情報を視覚化するためのオープンソース地図プロジェクト。
 
-An open-source map project for visualizing bear-related safety information in the Tohoku region of Japan.
+## 概要
 
-## Overview
+東北クマ安全マップは、地図ベースのインターフェースを通じて、クマに関する安全情報をより分かりやすく確認することを目的としたオープンソースプロジェクトです。
 
-Tohoku Bear Safety Map is a simple open-source project that aims to make bear-related safety information easier to understand through a map-based interface.
+このプロジェクトは、地域住民、旅行者、ハイカー、屋外作業者、そして地域のクマ関連の安全情報をより明確に理解する必要があるコミュニティ向けに設計されています。
 
-The project is designed for local residents, travelers, hikers, outdoor workers, and communities who need to understand regional bear-related safety information more clearly.
+## このプロジェクトが重要な理由
 
-## Why this project matters
+クマの目撃情報や、人と野生動物の安全に関する問題は、日本の多くの地域でますます重要になっています。
 
-Bear sightings and human-wildlife safety issues are becoming increasingly important in many areas of Japan.  
-However, local safety information can be scattered across different sources, making it difficult for people to understand the situation at a glance.
+しかし、地域の安全情報はさまざまな情報源に分散しているため、人々が状況を一目で把握するのは簡単ではありません。
 
-This project aims to organize and visualize bear-related safety information in a simple and accessible way.
+このプロジェクトは、クマに関する安全情報をシンプルで分かりやすい方法で整理し、視覚化することを目的としています。
 
-## Features
+## 特徴
 
-- Visualize bear-related safety information on a map
-- Organize safety points by area
-- Help users understand potential risk zones
-- Provide a base for future open data integration
-- Support future multilingual information sharing
+- クマに関する安全情報を地図上に視覚化する
+- 安全対策ポイントをエリア別に整理する
+- ユーザーが潜在的なリスクゾーンを理解できるように支援する
+- 将来のオープンデータ統合のための基盤を提供する
+- 将来の多言語情報共有を支援する
 
-## Screenshots
+## スクリーンショット
 
-### Map View
+### 地図表示
 
 ![Map screen](./screenshot-map.png)
 
-### Home View
+### ホームビュー
 
 ![Home screen](./screenshot-home.png)
 
-### Detail View
+### 詳細表示
 
 ![Detail screen](./screenshot-detail.png)
 
-### Mobile View
+### モバイルビュー
 
 ![Mobile screen](./screenshot-mobile.png)
+
+## 使い方
+
+1. アプリを開きます。
+2. 地図上で東北地方のクマ関連情報を確認します。
+3. 県別・エリア別の安全情報を確認します。
+4. 必要に応じて、各自治体や公的機関の公式情報ページを確認します。
+
+## 公開デモ
+
+Live demo:
+
+https://tohoku-bear-safety-map.vercel.app
+
+## ロードマップ
+
+- より多くの地域安全データを追加する
+- 地図デザインと使いやすさを改善する
+- 日付別フィルターを追加する
+- 位置検索機能を追加する
+- 多言語ドキュメントを追加する
+- コントリビューター向けにデータ構造を改善する
+
+## 技術スタック
+
+- TypeScript
+- Next.js
+- CSS
+- Map-based UI
+
+## コントリビューション
+
+提案、改善、フィードバックを歓迎します。
+
+貢献できる領域の例：
+
+- ドキュメントの改善
+- 公開データソースの追加
+- 地図UIの改善
+- 翻訳
+- バグ報告
+- 使いやすさに関するフィードバック
+
+## 免責事項
+
+このプロジェクトは、情報提供および教育目的の参考ツールです。
+
+このサイトの情報だけで安全判断を行わず、必ず自治体、警察、消防など公的機関の最新情報を確認してください。
+
+緊急時は110番、人身被害時は119番へ連絡してください。
+
+## Maintainer
+
+Maintained by toitenlamaiko0915-max.
+
+## License
+
+This project is licensed under the MIT License.
