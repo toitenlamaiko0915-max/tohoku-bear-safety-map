@@ -1,106 +1,31 @@
-# 東北クマ出没・安全確認マップ MVP
+# Tohoku Bear Safety Map
 
-東北6県の公式クマ出没情報を、住民が1か所で確認できる安全確認マップのMVPです。
+An open-source map project for visualizing bear-related safety information in the Tohoku region of Japan.
 
-## 概要
+## Overview
 
-このアプリは、青森県・岩手県・宮城県・秋田県・山形県・福島県の公式クマ出没情報への入口と、CSVで管理した参考情報を地図と一覧で表示します。
+Tohoku Bear Safety Map is a simple open-source project that aims to make bear-related safety information easier to understand through a map-based interface.
 
-安全情報を扱うため、MVPでは断定的な危険判定、住民投稿、詳細住所表示、罠や対応者の位置表示は実装していません。
+The project is designed for local residents, travelers, hikers, outdoor workers, and communities who need to understand regional bear-related safety information more clearly.
 
-## MVPの目的
+## Why this project matters
 
-- 東北6県の公式クマ出没情報を1か所にまとめる
-- CSVデータを読み込み、地図上に出没情報を表示する
-- 県・期間・種別で絞り込めるようにする
-- 各県の公式マップ・アプリ・Excel情報へのリンクを掲載する
-- 緊急時の行動案内を明記する
-- 安全性を優先し、誤解を生む機能を入れない
+Bear sightings and human-wildlife safety issues are becoming increasingly important in many areas of Japan.  
+However, local safety information can be scattered across different sources, making it difficult for people to understand the situation at a glance.
 
-## 使用技術
+This project aims to organize and visualize bear-related safety information in a simple and accessible way.
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Leaflet
-- CSV読み込み
+## Features
 
-## 起動方法
+- Visualize bear-related safety information on a map
+- Organize safety points by area
+- Help users understand potential risk zones
+- Provide a base for future open data integration
+- Support future multilingual information sharing
 
-依存関係をインストールしてから起動します。
+## Screenshot
 
-```bash
-npm install
-npm run dev
-```
+Add a screenshot here.
 
-開発サーバー起動後、ブラウザで `http://localhost:3000` を開いてください。
-
-ビルド確認:
-
-```bash
-npm run build
-```
-
-型チェック:
-
-```bash
-npm run typecheck
-```
-
-## CSVデータの場所
-
-```text
-public/data/bear_sightings.csv
-```
-
-## CSVカラム定義
-
-| カラム名 | 内容 |
-| --- | --- |
-| id | 一意のID |
-| prefecture | 県名 |
-| municipality | 市町村名 |
-| area | 地区名。詳細住所は入れず「〇〇地区周辺」のように概略で記載する |
-| occurred_at | 発生日時 |
-| event_type | 目撃、痕跡、人身被害、捕獲済み |
-| description | 内容 |
-| source_name | 情報源名 |
-| source_url | 公式情報ページURL |
-| latitude | 緯度 |
-| longitude | 経度 |
-| accuracy_m | 位置精度。実データ運用では1000〜3000mを基本に広めに設定する |
-| status | 公開対象は `published`。下書きは `draft`、非掲載は `archived` |
-
-## ページ構成
-
-- `/` トップページ
-- `/map` クマ出没マップ
-- `/official-links` 県別公式情報
-- `/safety` クマに遭遇した時の行動
-- `/updates` 更新履歴
-- `/about` このサイトについて
-
-## 注意事項
-
-このサイトは公式情報を確認しやすくするための参考サイトです。情報の正確性・最新性を保証するものではありません。
-
-緊急時は110番、人身被害時は119番へ連絡してください。このサイトの情報だけで安全判断を行わず、必ず自治体・警察・消防など公的機関の情報を確認してください。
-
-公式情報へのリンクは本番用URLを設定しています。リンク先の掲載元と更新状況を確認してください。
-
-地図上の位置は概略表示です。実際の詳細情報は各県の公式情報をご確認ください。CSVには民家・学校・施設などをピンポイントに示す緯度経度を入力しないでください。
-
-## 今後の拡張案
-
-- 公式情報の手動更新手順の整備
-- 各県オープンデータとの連携
-- API化
-- 管理画面
-- 公開／下書き／非掲載ステータス管理
-- LINE通知
-- メール通知
-- 行政向け詳細画面
-- 東北6県共通データベース化
-
-住民投稿機能や独自の危険判定はMVPでは実装しません。
+```md
+![Tohoku Bear Safety Map screenshot](./screenshot.png)
