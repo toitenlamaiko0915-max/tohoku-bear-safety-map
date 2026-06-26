@@ -40,6 +40,3 @@ This project aims to organize and visualize bear-related safety information in a
 ### Mobile View
 
 ![Mobile screen](./screenshot-mobile.png)
-
-```md
-![Tohoku Bear Safety Map screenshot](./screenshot.png)
