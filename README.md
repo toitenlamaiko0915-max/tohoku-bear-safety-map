@@ -1,3 +1,5 @@
+An open-source map project for visualizing bear-related safety information in Japan's Tohoku region.
+
 # Tohoku Bear Safety Map
 
 An open-source map project for visualizing bear-related safety information in the Tohoku region of Japan.
