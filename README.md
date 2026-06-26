@@ -23,9 +23,23 @@ This project aims to organize and visualize bear-related safety information in a
 - Provide a base for future open data integration
 - Support future multilingual information sharing
 
-## Screenshot
+## Screenshots
 
-Add a screenshot here.
+### Map View
+
+![Map screen](./screenshot-map.png)
+
+### Home View
+
+![Home screen](./screenshot-home.png)
+
+### Detail View
+
+![Detail screen](./screenshot-detail.png)
+
+### Mobile View
+
+![Mobile screen](./screenshot-mobile.png)
 
 ```md
 ![Tohoku Bear Safety Map screenshot](./screenshot.png)
