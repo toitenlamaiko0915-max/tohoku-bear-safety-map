@@ -20,7 +20,7 @@ export default function HomePage() {
           <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
             <p className="inline-flex items-center gap-2 rounded border border-civic-100 bg-civic-50 px-3 py-2 text-sm font-extrabold text-civic-800">
               <CalendarDays aria-hidden="true" className="h-4 w-4 flex-none" />
-              最終更新日：2026年6月20日
+              最終更新日：2026年6月27日
             </p>
             <Link href="/updates" className="text-sm font-extrabold text-forest-800 underline-offset-4 hover:underline">
               更新履歴を見る

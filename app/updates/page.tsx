@@ -19,6 +19,29 @@ export default function UpdatesPage() {
         <div className="flex items-start gap-3">
           <CalendarDays aria-hidden="true" className="mt-1 h-5 w-5 text-forest-700" />
           <div>
+            <h2 className="text-xl font-extrabold text-slate-950">2026年6月27日</h2>
+            <p className="mt-1 text-sm leading-7 text-slate-600">
+              東北6県の公式情報を確認し、確認できた最新日分を掲載可能な範囲で反映しました。
+            </p>
+          </div>
+        </div>
+        <ul className="mt-5 grid gap-3 text-sm leading-7 text-slate-700">
+          <li className="rounded border border-slate-200 bg-slate-50 p-3">東北6県の公式クマ出没情報を確認しました。</li>
+          <li className="rounded border border-slate-200 bg-slate-50 p-3">
+            公式情報に基づき、掲載可能な範囲でCSVデータを更新しました。
+          </li>
+          <li className="rounded border border-slate-200 bg-slate-50 p-3">/map の一覧と地図に反映されることを確認しました。</li>
+          <li className="rounded border border-slate-200 bg-slate-50 p-3">地図上の位置は概略表示です。</li>
+          <li className="rounded border border-slate-200 bg-slate-50 p-3">
+            最新・詳細情報は必ず各公式情報をご確認ください。
+          </li>
+        </ul>
+      </article>
+
+      <article className="rounded border border-slate-200 bg-white p-6 shadow-soft">
+        <div className="flex items-start gap-3">
+          <CalendarDays aria-hidden="true" className="mt-1 h-5 w-5 text-forest-700" />
+          <div>
             <h2 className="text-xl font-extrabold text-slate-950">2026年6月20日</h2>
             <p className="mt-1 text-sm leading-7 text-slate-600">
               東北6県の公式情報を確認し、確認できた最新日分を掲載可能な範囲で反映しました。
