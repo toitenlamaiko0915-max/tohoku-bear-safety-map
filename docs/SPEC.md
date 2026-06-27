@@ -308,7 +308,7 @@ CSVで管理する想定の入力項目。
 
 ```csv
 id,prefecture,municipality,occurred_date,title,description,latitude,longitude,location_label,category,source_name,source_url,source_published_date,updated_at,display,note
-TBM-20260620-001,秋田県,秋田市,2026-06-20,秋田市内でクマ目撃,秋田市内でクマの目撃情報がありました。,39.7200,140.1000,秋田市周辺,目撃,秋田県公式サイト,https://example.com,2026-06-20,2026-06-20,true,位置は概略表示
+TBM-20260620-001,秋田県,秋田市,2026-06-20,秋田市内でクマ目撃,秋田市内でクマの目撃情報がありました。,39.7200,140.1000,秋田市周辺,目撃,秋田県公式サイト,https://kumadas.net/,2026-06-20,2026-06-20,true,位置は概略表示
 ```
 
 ---
