@@ -1,98 +1,114 @@
-# 東北地方のクマ対策マップ
+# Tohoku Bear Safety Map
 
 An open-source map project for visualizing bear-related safety information in Japan's Tohoku region.
 
-日本の東北地方におけるクマ関連の安全情報を視覚化するためのオープンソース地図プロジェクト。
+## Overview
 
-## 概要
+Tohoku Bear Safety Map is an open-source project designed to make bear-related safety information easier to understand through a map-based interface.
 
-東北クマ安全マップは、地図ベースのインターフェースを通じて、クマに関する安全情報をより分かりやすく確認することを目的としたオープンソースプロジェクトです。
+This project is intended for residents, travelers, hikers, outdoor workers, and local communities who need a clearer way to understand bear-related safety information in the Tohoku region of Japan.
 
-このプロジェクトは、地域住民、旅行者、ハイカー、屋外作業者、そして地域のクマ関連の安全情報をより明確に理解する必要があるコミュニティ向けに設計されています。
+## Why This Project Matters
 
-## このプロジェクトが重要な理由
+Bear sightings and human-wildlife safety issues are becoming increasingly important in many areas of Japan.
 
-クマの目撃情報や、人と野生動物の安全に関する問題は、日本の多くの地域でますます重要になっています。
+However, local safety information is often scattered across multiple sources, making it difficult for people to quickly understand the situation at a glance.
 
-しかし、地域の安全情報はさまざまな情報源に分散しているため、人々が状況を一目で把握するのは簡単ではありません。
+This project aims to organize and visualize bear-related safety information in a simple, accessible, and easy-to-understand way.
 
-このプロジェクトは、クマに関する安全情報をシンプルで分かりやすい方法で整理し、視覚化することを目的としています。
+## Features
 
-## 特徴
+* Visualizes bear-related safety information on a map
+* Organizes safety information by prefecture and area
+* Helps users understand potential risk zones
+* Provides a foundation for future open data integration
+* Supports future multilingual information sharing
+* Encourages clearer access to official public safety information
 
-- クマに関する安全情報を地図上に視覚化する
-- 安全対策ポイントをエリア別に整理する
-- ユーザーが潜在的なリスクゾーンを理解できるように支援する
-- 将来のオープンデータ統合のための基盤を提供する
-- 将来の多言語情報共有を支援する
+## Screenshots
 
-## スクリーンショット
-
-### 地図表示
+### Map View
 
 ![Map screen](./screenshot-map.png)
 
-### ホームビュー
+### Home View
 
 ![Home screen](./screenshot-home.png)
 
-### 詳細表示
+### Detail View
 
 ![Detail screen](./screenshot-detail.png)
 
-### モバイルビュー
+### Mobile View
 
 ![Mobile screen](./screenshot-mobile.png)
 
-## 使い方
+## How to Use
 
-1. アプリを開きます。
-2. 地図上で東北地方のクマ関連情報を確認します。
-3. 県別・エリア別の安全情報を確認します。
-4. 必要に応じて、各自治体や公的機関の公式情報ページを確認します。
+1. Open the application.
+2. Check bear-related safety information on the map.
+3. Review safety information by prefecture or area.
+4. When necessary, confirm the latest information from official local government or public safety sources.
 
-## 公開デモ
-
-Live demo:
+## Live Demo
 
 https://tohoku-bear-safety-map.vercel.app
 
-## ロードマップ
+## Roadmap
 
-- より多くの地域安全データを追加する
-- 地図デザインと使いやすさを改善する
-- 日付別フィルターを追加する
-- 位置検索機能を追加する
-- 多言語ドキュメントを追加する
-- コントリビューター向けにデータ構造を改善する
+* Add more regional public safety data
+* Improve map design and usability
+* Add date-based filtering
+* Add location search functionality
+* Add multilingual documentation
+* Improve the data structure for contributors
+* Add clearer source attribution for official information
+* Improve accessibility and mobile usability
 
-## 技術スタック
+## Planned Use of AI / Codex
 
-- TypeScript
-- Next.js
-- CSS
-- Map-based UI
+This project plans to use Codex and OpenAI API credits to improve the quality, maintainability, accessibility, and reliability of the codebase.
 
-## コントリビューション
+Planned use cases include:
 
-提案、改善、フィードバックを歓迎します。
+* Reviewing and improving code quality
+* Refactoring data structures for public safety information
+* Generating and improving documentation
+* Supporting multilingual documentation and user-facing text
+* Reviewing potential security and reliability issues
+* Improving developer workflows for future open-source contributions
+* Making the project easier to maintain as an open-source public safety tool
 
-貢献できる領域の例：
+The goal is to make Tohoku Bear Safety Map easier to maintain, safer to use, and more accessible to residents, travelers, hikers, outdoor workers, and local communities.
 
-- ドキュメントの改善
-- 公開データソースの追加
-- 地図UIの改善
-- 翻訳
-- バグ報告
-- 使いやすさに関するフィードバック
+## Tech Stack
 
-## 免責事項
+* TypeScript
+* Next.js
+* CSS
+* Map-based UI
 
-このプロジェクトは、情報提供および教育目的の参考ツールです。
+## Contribution
 
-このサイトの情報だけで安全判断を行わず、必ず自治体、警察、消防など公的機関の最新情報を確認してください。
+Suggestions, improvements, and feedback are welcome.
 
-緊急時は110番、人身被害時は119番へ連絡してください。
+Examples of possible contributions include:
+
+* Improving documentation
+* Adding public data sources
+* Improving the map UI
+* Translating documentation or user-facing text
+* Reporting bugs
+* Providing usability feedback
+* Improving data structure and source attribution
+
+## Disclaimer
+
+This project is an informational and educational reference tool.
+
+Do not rely only on this website when making safety decisions. Always confirm the latest information from official sources such as local governments, police, fire departments, and other public authorities.
+
+In Japan, call 110 for police emergencies and 119 for fire, rescue, or medical emergencies.
 
 ## Maintainer
 
